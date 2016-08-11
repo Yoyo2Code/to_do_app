@@ -7,11 +7,12 @@ var mongoose = require('mongoose');                     // mongoose for mongodb
 var morgan = require('morgan');             // log requests to the console (express4)
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+var database = require('./config/database'); // require mongo from another file
 
 // configuration =================
 
+mongoose.connect(database.url);     // connect to mongoDB database on modulus.io
 
-mongoose.connect('mongodb://localhost/8080');
 // mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
